@@ -44,6 +44,9 @@ function setflag(){
     }
 }
 function clicktile(){
+    if (gameOver || this.classList.contains(tile-clicked)){
+        return;
+    }
     let tile = this;
     if(flagenabled){
     if(tile.innerText == ""){
@@ -84,6 +87,18 @@ function checkMine(r,c){
     if(r<0 || r>=rows || c<0 ||c>=columns){
         return;
     }
+
+    if ([r][c].classList.contains("tile.clicked")) {
+        return;
+
+    }
+    board[r][c].classList.add("tile.clicked");
+    tileclicked+=1;
+
+
+
+
+
     let minesFound =0;
     //top3
     minesFound+=checkTile(r-1, c-1);
@@ -102,6 +117,11 @@ function checkMine(r,c){
     if(minesFound>0){
         board[r][c].innerText = minesFound;
         board[r][c].classList.add("x" + minesFound.toString());
+    }
+
+    if( tileclicked==rows*columns-minescount){
+        document.getElementById("mines-count").innerText="cleared";
+        gameOver = true;
     }
 
 
