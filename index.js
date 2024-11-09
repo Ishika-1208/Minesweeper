@@ -59,6 +59,36 @@ function clicktile(){
         gameOver =true;
         revealMines();
         return;
-        
+
+    }
+    let coords= tile.id.split("-");
+    let r=parseInt(coords[0]);
+    let c=parseInt(coords[1]);
+    checkMine(r,c);
+    
+    
+
+}
+function revealMines(){
+    for (let r=0; r<row; r++){
+       for(let c=0; c<columns; c++){
+        let tile = board[r][c];
+        if (mineslocation.includes(tile.id)){
+            tile.innerText="💣";
+            tile.style.backgroundColor="red"
+        }
+       }
+    }
+}
+function checkMine(r,c){
+    if(r<0 || r>=rows || c<0 ||c>=columns){
+        return;
+    }
+    let minesFound =0;
+    minesFound+=checkTile(r-1, c-1);
+}
+function checkTile(r,c){
+    if(r<0 || r>=rows || c<0 ||c>=columns){
+        return 0;
     }
 }
