@@ -54,4 +54,11 @@ function clicktile(){
     }
     return;
     }
+    if (mineslocation.includes(title.id)){
+        alert("GAME OVER");
+        gameOver =true;
+        revealMines();
+        return;
+        
+    }
 }
