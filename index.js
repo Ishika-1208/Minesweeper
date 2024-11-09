@@ -1,7 +1,7 @@
 var board = [];
 var rows = 8;
 var columns = 8;
-var minescount = 5;
+var minescount = 45;
 var mineslocation = [];
 var tileclicked = 0;
 var flagenabled = false;
@@ -10,12 +10,30 @@ window.onload = function(){
     startgame();
 }
 function setmines(){
-    mineslocation.push("2-2");
-    mineslocation.push("2-3");
-    mineslocation.push("5-6");
-    mineslocation.push("3-4");
-    mineslocation.push("1-1");
+    // mineslocation.push("2-2");
+    // mineslocation.push("2-3");
+    // mineslocation.push("5-6");
+    // mineslocation.push("3-4");
+    // mineslocation.push("1-1");
+
+    let minesLeft =minesCount;
+    while (minesLeft>0){
+
+        let r=Math.floor(Math.random()*rows);
+        let c=Math.floor(Math.random()*columns);
+        let id = r.toString() + "-" +c.toString();
+        if (mineslocation.includes(id)){
+            mineslocation.push(id);
+            minesLeft -=1;
+    
+        }
+    
+
+    }
+   
+
 }
+
 function startgame(){
     document.getElementById("mines-count").innerText = minescount;
     document.getElementById("flag-button").addEventListener("click",setflag);
