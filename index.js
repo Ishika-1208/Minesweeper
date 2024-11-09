@@ -85,10 +85,35 @@ function checkMine(r,c){
         return;
     }
     let minesFound =0;
+    //top3
     minesFound+=checkTile(r-1, c-1);
+    minesFound+=checkTile(r-1, c); 
+    minesFound+=checkTile(r-1, c+1);
+
+    //left and right
+    minesFound+=checkTile(r-1, c-1);
+    minesFound+=checkTile(r-1, c+1);
+
+    //bottom
+    minesFound+=checkTile(r+1, c-1);
+    minesFound+=checkTile(r+1, c); 
+    minesFound+=checkTile(r+1, c+1);
+
+    if(minesFound>0){
+        board[r][c].innerText = minesFound;
+        board[r][c].classList.add("x" + minesFound.toString());
+    }
+
+
+
+
 }
 function checkTile(r,c){
     if(r<0 || r>=rows || c<0 ||c>=columns){
         return 0;
     }
+    if ( mineslocation.includes(r.toString() + "-" + c.toString())) {
+        return 1;
+    }
+    return 0;
 }
