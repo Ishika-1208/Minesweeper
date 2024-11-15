@@ -1,3 +1,7 @@
+let clickSound = new Audio('click.mp3');  // sound for regular clicks
+let bombSound = new Audio('bomb.mp3');    // sound for bomb click
+
+
 let board = [];
 let rows = 8;
 let columns = 8;
@@ -80,14 +84,17 @@ function clickTile() {
         gameOver = true;
         revealMines();
         showGameOverModal();  
-        clearInterval(timerInterval);  
+        clearInterval(timerInterval); 
+        bombSound.play(); 
         return;
     }
+
 
     let coords = tile.id.split("-");
     let r = parseInt(coords[0]);
     let c = parseInt(coords[1]);
     checkMine(r, c);
+    clickSound.play();
 }
 
 function flagTile(e) {
