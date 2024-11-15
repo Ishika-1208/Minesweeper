@@ -1,5 +1,6 @@
 let clickSound = new Audio('click.mp3');  // sound for regular clicks
 let bombSound = new Audio('bomb.mp3');    // sound for bomb click
+let backgroundMusic = new Audio('background.mp3');  // Load background music
 
 
 let board = [];
@@ -49,6 +50,12 @@ function startGame() {
         }
         board.push(row);
     }
+
+        // Play background music on game start
+    backgroundMusic.loop = true;  // Loop the background music
+    backgroundMusic.volume = 0.1;  // Adjust the volume (0.0 to 1.0)
+    backgroundMusic.play();  // Start the music
+
 }
 
 function setMines() {
@@ -85,7 +92,10 @@ function clickTile() {
         revealMines();
         showGameOverModal();  
         clearInterval(timerInterval); 
-        bombSound.play(); 
+        bombSound.play();
+        // bombSound.volume = 0.1; 
+        backgroundMusic.pause();  
+        bacgroundkMusic.currentTime = 0;
         return;
     }
 
@@ -95,6 +105,14 @@ function clickTile() {
     let c = parseInt(coords[1]);
     checkMine(r, c);
     clickSound.play();
+    // clickSound.volume=0.1;
+    
+    if (backgroundMusic.paused) {
+        backgroundMusic.play(); // Restart the background music if it was paused
+    }
+ 
+
+    
 }
 
 function flagTile(e) {
