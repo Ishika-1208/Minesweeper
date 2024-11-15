@@ -78,7 +78,7 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: rgba(31, 30, 30, 0.8); 
+    background-color: rgba(41, 40, 40, 0.8); 
     padding: 20px;
     border-radius: 10px;
     text-align: center;
@@ -103,37 +103,5 @@ body {
 
 #restart-button:hover {
     background-color: #e53935; 
-}
-
-@media (max-width: 600px) {
-    #board {
-        width: 90vw;
-        height: 90vw;
-    }
-
-    #flag-button {
-        width: 15vw;
-        height: 8vh;
-    }
-
-    #game-over-modal {
-        width: 80vw;
-    }
-}
-
-@media (max-width: 400px) {
-    #board {
-        width: 95vw;
-        height: 95vw;
-    }
-
-    #flag-button {
-        width: 18vw;
-        height: 10vh;
-    }
-
-    #game-over-modal {
-        width: 90vw;
-    }
 }
 
