@@ -14,24 +14,24 @@ window.onload = function() {
 }
 
 function startGame() {
-    // Reset game variables
+    
     gameOver = false;
     tilesClicked = 0;
     minesLocation = [];
-    board = [];  // Clear the existing board
-    timeElapsed = 0; // Reset the timer
+    board = [];  
+    timeElapsed = 0;
     document.getElementById("mines-count").innerText = minesCount;
     document.getElementById("timer").innerText = "0s";
     
-    // Start Timer
-    if (timerInterval) clearInterval(timerInterval); // Clear any previous intervals
-    timerInterval = setInterval(updateTimer, 1000); // Update the timer every second
     
-    // Reset UI elements
-    document.getElementById("board").innerHTML = '';  // Clear existing board UI
-    setMines();  // Set new mines randomly
+    if (timerInterval) clearInterval(timerInterval); 
+    timerInterval = setInterval(updateTimer, 1000); 
+    
+    
+    document.getElementById("board").innerHTML = '';  
+    setMines();  
 
-    // Rebuild the board grid
+    
     for (let r = 0; r < rows; r++) {
         let row = [];
         for (let c = 0; c < columns; c++) {
@@ -39,7 +39,7 @@ function startGame() {
             tile.id = r.toString() + "-" + c.toString();
             tile.classList.add("tile");
             tile.addEventListener("click", clickTile);
-            tile.addEventListener("contextmenu", flagTile); // Right-click to flag
+            tile.addEventListener("contextmenu", flagTile); 
             document.getElementById("board").appendChild(tile);
             row.push(tile);
         }
@@ -74,13 +74,13 @@ function clickTile() {
     if (gameOver || this.classList.contains("tile-clicked")) return;
 
     let tile = this;
-    if (flagEnabled) return; // Don't interact with flagged tiles
+    if (flagEnabled) return;
 
     if (minesLocation.includes(tile.id)) {
         gameOver = true;
         revealMines();
-        showGameOverModal();  // Show custom modal when game over
-        clearInterval(timerInterval);  // Stop the timer
+        showGameOverModal();  
+        clearInterval(timerInterval);  
         return;
     }
 
@@ -91,7 +91,7 @@ function clickTile() {
 }
 
 function flagTile(e) {
-    e.preventDefault(); // Prevent the default context menu
+    e.preventDefault(); 
 
     if (gameOver || this.classList.contains("tile-clicked")) return;
 
@@ -173,7 +173,7 @@ function updateTimer() {
 function showGameOverModal() {
     document.getElementById("game-over-modal").style.display = "flex";
     document.getElementById("restart-button").addEventListener("click", function() {
-        document.getElementById("game-over-modal").style.display = "none";  // Hide the modal
-        startGame();  // Restart the game
+        document.getElementById("game-over-modal").style.display = "none"; 
+        startGame();  
     });
 }
