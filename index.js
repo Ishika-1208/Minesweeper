@@ -1,6 +1,6 @@
-let clickSound = new Audio('click.mp3');  // sound for regular clicks
-let bombSound = new Audio('bomb.mp3');    // sound for bomb click
-let backgroundMusic = new Audio('background.mp3');  // Load background music
+let clickSound = new Audio('click.mp3');  
+let bombSound = new Audio('bomb.mp3');    
+let backgroundMusic = new Audio('background.mp3');  
 
 
 let board = [];
@@ -51,10 +51,10 @@ function startGame() {
         board.push(row);
     }
 
-        // Play background music on game start
-    backgroundMusic.loop = true;  // Loop the background music
-    backgroundMusic.volume = 0.1;  // Adjust the volume (0.0 to 1.0)
-    backgroundMusic.play();  // Start the music
+        
+    backgroundMusic.loop = true;  
+    backgroundMusic.volume = 0.1;  
+    backgroundMusic.play();  
 
 }
 
@@ -108,7 +108,7 @@ function clickTile() {
     // clickSound.volume=0.1;
     
     if (backgroundMusic.paused) {
-        backgroundMusic.play(); // Restart the background music if it was paused
+        backgroundMusic.play(); 
     }
  
 

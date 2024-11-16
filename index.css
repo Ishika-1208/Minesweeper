@@ -46,7 +46,7 @@ div {
     border-radius: 10px;
 }
 
-/* Tile Style */
+
 #board div {
     width: 48px;
     height: 48px;
@@ -92,7 +92,7 @@ div {
 #board div.tile.x7:hover { background-color: #00ffff; color: white; }
 #board div.tile.x8:hover { background-color: #808080; color: white; }
 
-/* Flagging and Tile Clicked Effects */
+
 #board div.tile-clicked {
     background-color: #ccc;
     box-shadow: none;
@@ -123,7 +123,6 @@ div {
     transform: scale(1.1);
 }
 
-/* Game Over Modal */
 #game-over-modal {
     display: none;
     position: fixed;
